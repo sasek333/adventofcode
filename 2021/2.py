@@ -1,6 +1,7 @@
 #! /bin/env python3
 
 def part1 (puzzle):
+    
     depth = position = 0
     
     for command in puzzle:
@@ -16,7 +17,21 @@ def part1 (puzzle):
     return depth * position
 
 def part2 (puzzle):
-    pass
+    
+    aim = depth = position = 0
+    
+    for command in puzzle:
+        word, number = command.split(" ")
+        number = int(number)
+        if word == "forward":
+            position += number
+            depth += aim * number
+        elif word == "down":
+            aim += number
+        elif word == "up":
+            aim -= number
+
+    return depth * position
 
 puzzle = ["forward 6",
 "forward 8",
@@ -1022,6 +1037,6 @@ puzzle = ["forward 6",
 
 if __name__ == "__main__":
 
-    print(part1(puzzle))
+    # print(part1(puzzle))
 
-    # print(part2(puzzle))
+    print(part2(puzzle))
