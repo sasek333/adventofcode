@@ -1,10 +1,10 @@
 #! /bin/env python3
 
-def part1 ():
+def part1 (puzzle):
     pass
 
 
-def part2 ():
+def part2 (puzzle):
     pass
 
 puzzle = []
