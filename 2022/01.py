@@ -16,8 +16,17 @@ def part1 (puzzle):
 
 
 def part2 (puzzle):
-    pass
+    calorie_list = []
+    current_calories = 0
 
+    for i in puzzle:
+        if not i:
+            calorie_list.append(current_calories)
+            current_calories = 0
+        else:
+            current_calories += int(i)
+    calorie_list.sort(reverse=True)
+    return sum(calorie_list[:3])   
 
 if __name__ == "__main__":
     with open("2022/01.txt") as f:
@@ -25,6 +34,6 @@ if __name__ == "__main__":
         for line in f:
             puzzle.append(line.replace('\n', ''))
     
-    print(part1(puzzle))
+    # print(part1(puzzle))
 
-    # print(part2(puzzle))
+    print(part2(puzzle))
