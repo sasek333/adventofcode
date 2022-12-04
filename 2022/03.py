@@ -19,7 +19,7 @@ def part1 (puzzle):
 def part2 (puzzle):
     from itertools import islice, tee
     result = 0
-    for i in range(int(len(puzzle)/3)):
+    for i in range(len(puzzle)//3):
         try:
             common = set(puzzle[3*i]).intersection(set(puzzle[3*i+1]), set(puzzle[3*i+2])).pop()
         except KeyError:
