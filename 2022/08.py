@@ -8,16 +8,29 @@ def part1 (puzzle):
 
     for (x, y), num in np.ndenumerate(forest_map):
         # print(f'{x=} {y=} {num=}')
-        if forest_map[x, y] > max([*forest_map[:x, y], -1]) or \
-           forest_map[x, y] > max([*forest_map[x+1:, y], -1]) or \
-           forest_map[x, y] > max([*forest_map[x, :y], -1]) or \
-           forest_map[x, y] > max([*forest_map[x, y+1:], -1]):
+        if num > max([*forest_map[:x, y], -1]) or \
+           num > max([*forest_map[x+1:, y], -1]) or \
+           num > max([*forest_map[x, :y], -1]) or \
+           num > max([*forest_map[x, y+1:], -1]):
             result[x,y] = 1
     return int(result.sum())
 
 
 def part2 (puzzle):
-    pass
+    forest_map = np.array(puzzle)
+    result = np.zeros(forest_map.shape)
+
+    for (x, y), num in np.ndenumerate(forest_map):
+        # print(f'{x=} {y=} {num=}')
+        # if forest_map[x, y] > max([*forest_map[:x, y], -1]) or \
+        #    forest_map[x, y] > max([*forest_map[x+1:, y], -1]) or \
+        #    forest_map[x, y] > max([*forest_map[x, :y], -1]) or \
+        #    forest_map[x, y] > max([*forest_map[x, y+1:], -1]):
+        #     result[x,y] = 1
+        for idx, elem in enumerate(np.flip(forest_map[:x,y])):
+            pass
+    return int(np.amax(result))
+
 
 
 if __name__ == "__main__":
@@ -31,4 +44,4 @@ if __name__ == "__main__":
     
     print(part1(puzzle))
 
-    # print(part2(puzzle))
+    print(part2(puzzle))
