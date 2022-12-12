@@ -9,7 +9,7 @@ def part2 (puzzle):
 
 
 if __name__ == "__main__":
-    with open("2021/4.txt") as f:
+    with open("04.txt") as f:
         puzzle = []
         for line in f:
             puzzle.append(line.replace('\n', ''))
