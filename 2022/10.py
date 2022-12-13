@@ -22,7 +22,30 @@ def part1 (puzzle):
 
 
 def part2 (puzzle):
-    pass
+    x_register = 1
+    cycle = 1
+    result = ''
+
+    def draw(x_register, cycle):
+        pixels = ''
+        if abs(((cycle-1) % 40) - x_register) <= 1:
+            pixels += '#'
+        else:
+            pixels += ' '
+        if cycle % 40 == 0:
+            pixels += '\n'
+        
+        return pixels
+
+    for line in puzzle:
+        result += draw(x_register, cycle)
+        cycle += 1
+        if line.startswith('add'):
+            result += draw(x_register, cycle)
+            cycle += 1
+            x_register += int(line.split()[1])
+
+    return result
 
 
 if __name__ == "__main__":
@@ -31,6 +54,6 @@ if __name__ == "__main__":
         for line in f:
             puzzle.append(line.replace('\n', ''))
     
-    print(part1(puzzle))
+    # print(part1(puzzle))
 
-    # print(part2(puzzle))
+    print(part2(puzzle))
